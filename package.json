@@ -4,7 +4,7 @@
   "description": "",
   "main": "./src/api/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha src/tests/**/*$NAME*.test.js --exit",
     "start": "node .",
     "start:dev": "nodemon ."
   },
@@ -28,6 +28,8 @@
     "uuid": "^8.3.2"
   },
   "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.25.4",
