@@ -5,7 +5,7 @@ const getAPI = (req, res) => {
 
   const result = PaginacaoService.getAPI(query);
 
-  return res.status(200).json(result);
+  return res.status(200).send(result);
 };
 
 module.exports = {

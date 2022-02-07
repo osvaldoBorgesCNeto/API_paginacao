@@ -11,7 +11,7 @@ const erroMiddleware = require('../middlewares/error');
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/paginacao', PaginacaoRouter);
+app.use('/v1/paginacao', PaginacaoRouter);
 app.use(erroMiddleware);
 
 app.listen(PORT, () => console.log(`Server ligado na porta ${PORT}`));

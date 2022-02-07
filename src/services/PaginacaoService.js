@@ -1,8 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
-
-const createArray = (start, end, array, paginaAtual) => array
-  .slice(start, end)
-  .map((elem) => ((elem === paginaAtual) ? `**${elem}**` : elem));
+const createArray = require('../middlewares/createArray');
 
 const getAPI = ({ paginaAtual, quantidadePaginas }) => {
   const paginaAtualNumber = +paginaAtual;
@@ -11,24 +8,30 @@ const getAPI = ({ paginaAtual, quantidadePaginas }) => {
   let result = [];
 
   if (quantidadePaginas <= 5) {
-    result = array;
+    result = createArray(0, quantidadePaginas, array, paginaAtual);
+  } else if (['1', '2', '3'].includes(paginaAtual)) {
+    result = createArray(0, 5, array, paginaAtual);
+    result.push('...');
+  } else if (lastNumbers.includes(paginaAtual)) {
+    result = createArray(quantidadePaginas - 5, quantidadePaginas, array, paginaAtual);
+    result.unshift('...');
   } else {
-    if (['1', '2', '3'].includes(paginaAtual)) {
-      result = createArray(0, 5, array, paginaAtualNumber);
-      result.push('...');
-    } if (lastNumbers.includes(paginaAtual)) {
-      result = createArray(quantidadePaginas - 5, quantidadePaginas, array, paginaAtualNumber);
-      result.unshift('...');
-    } else {
-      result = createArray(paginaAtualNumber - 3, paginaAtualNumber + 2, array, paginaAtual);
-      result.push('...');
-      result.unshift('...');
-    }
+    result = createArray(paginaAtualNumber - 3, paginaAtualNumber + 2, array, paginaAtual);
+    result.push('...');
+    result.unshift('...');
   }
+  let resultString = '[';
+  result.forEach((elem) => {
+    if (elem === result[result.length - 1]) {
+      resultString = `${resultString}'${elem}']`;
+    } else {
+      resultString = `${resultString}'${elem}', `;
+    }
+  });
 
   return [{
     id: uuidv4(),
-    paginacao: result,
+    paginacao: resultString,
   }];
 };
 
