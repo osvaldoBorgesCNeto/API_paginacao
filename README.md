@@ -20,18 +20,18 @@
 
 **Clone the repository**
 ```bash
-	git clone git@github.com:osvaldoBorgesCNeto/API_paginacao.git
-	cd API_paginacao
+  git clone git@github.com:osvaldoBorgesCNeto/API_paginacao.git
+  cd API_paginacao
 ```
 
 **Install the dependencies**
 ```bash
-	npm install
+  npm install
 ```
 
 **For development environment**
 ```bash
-	npm run start:dev
+  npm run start:dev
 ```
 
 ## API Endpoints
@@ -41,10 +41,10 @@
 ### `GET` /paginacao
 
 ##### Request URL
-
 ```bash
-  	http://localhost:8000/v1/paginacao?paginaAtual=1&quantidadePaginas=10
+  http://localhost:8000/v1/paginacao?paginaAtual=1&quantidadePaginas=10
 ```
+
 ##### Response body
 
 ```json
