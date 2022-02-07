@@ -1,4 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
+const convertArrayToString = require('../middlewares/convertArrayToString');
 const createArray = require('../middlewares/createArray');
 
 const getAPI = ({ paginaAtual, quantidadePaginas }) => {
@@ -20,14 +21,8 @@ const getAPI = ({ paginaAtual, quantidadePaginas }) => {
     result.push('...');
     result.unshift('...');
   }
-  let resultString = '[';
-  result.forEach((elem) => {
-    if (elem === result[result.length - 1]) {
-      resultString = `${resultString}'${elem}']`;
-    } else {
-      resultString = `${resultString}'${elem}', `;
-    }
-  });
+
+  const resultString = convertArrayToString(result);
 
   return [{
     id: uuidv4(),

@@ -1,5 +1,6 @@
 const chai = require('chai');
 const chaiHttp = require('chai-http');
+const server = require('../api/app')
 
 chai.use(chaiHttp);
 
@@ -9,8 +10,8 @@ describe('GET /paginacao', () => {
   let response;
 
   before(async () => {
-    response = await chai.request('http://localhost:8000')
-      .get('/paginacao?paginaAtual=8&quantidadePaginas=10');
+    response = await chai.request(server)
+      .get('/v1/paginacao?paginaAtual=8&quantidadePaginas=10');
   });
 
   it('retorna o codigo de status 200', () => {
