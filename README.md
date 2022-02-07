@@ -43,7 +43,7 @@
 ##### Request URL
 
 ```bash
-  http://localhost:8000/v1/paginacao?paginaAtual=1&quantidadePaginas=10
+  	http://localhost:8000/v1/paginacao?paginaAtual=1&quantidadePaginas=10
 ```
 ##### Response body
 
